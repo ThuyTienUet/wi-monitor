@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+/* td {
+  white-space: nowrap;
+} */
+
+/* a:focus {
+  background: red;
+} */
+
+/* a:active {
+  background-color: #4CAF50;
+  color: white; 
+} */

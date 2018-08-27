@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monitoring Service</title>
+    <!-- <link href="../../light-bootstrap-dashboard/assets/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <script src="vendor/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="vendor/js/popper.min.js"></script>
+    <script src="vendor/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendor/css/datatables.min.css" />
+    <script type="text/javascript" src="vendor/js/datatables.min.js"></script>
+    <link rel="stylesheet" href="vendor/style.css">
+</head>
+
+<body ng-app="wiMonitor">
+    <div class="container-fluid h-100" ng-controller="appController" style="background: rgba(250, 254, 255, 0.885)">
+        <div class="row h-100">
+
+            <div class="col-12 col-md-3 col-lg-2 my-4" id="list_monitor" style="text-align: center">
+                <h1>Monitor</h1>
+                <hr>
+                <br>
+                <br>
+                <a href="" ng-click="change('chat')" class="active">
+                    <p>Monitor chat</p>
+                </a>
+                <a href="" ng-click="change('wi')">
+                    <p> Monitor wi </p>
+                </a>
+                <a href="" ng-click="change('api')">
+                    <p> Monitor api </p>
+                </a>
+                <!-- <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <li class="nav-item active ">
+                            <a class="nav-link" href="./wiChat.html">
+                                <i class="glyphicon glyphicon-align-justify"> </i>
+                                <p>Chat</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="./wiApi.html">
+                                <i class="material-icons"> </i>
+                                <p>API</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 border-left my-4 overflow-auto">
+                    <h2>{{title}}</h2>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Raw Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mean-tab" data-toggle="tab" href="#mean" role="tab" aria-controls="mean" aria-selected="false">Meaning</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="margin-left: 600px"> Total request:
+                                <span ng-bind="total"></span>
+                            </a>
+                        </li>
+                    </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <br>
+                        <div class="form-inline mb-2">
+                            <label for="hours" class="mr-1">Request on </label>
+                            <select id="hours" class="form-control mr-2" ng-model="hours">
+                                <option value="1">1 Hours before</option>
+                                <option value="2">2 Hours before</option>
+                                <option value="3">3 Hours before</option>
+                                <option value="6">6 Hours before</option>
+                                <option value="12">12 Hours before</option>
+                                <option value="24">24 Hours before</option>
+                            </select>
+                            <button class="btn btn-primary" ng-click="getRequests()">Go</button>
+                        </div>
+                        <table id="main-table" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Username</th>
+                                    <th>Time</th>
+                                    <th>Total Message</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="mean" role="tabpanel" aria-labelledby="mean-tab">
+                        <br>
+                        <div class="form-inline mb-2">
+                            <label for="days" class="mr-1">Request on </label>
+                            <select id="days" class="form-control mr-2" ng-model="days">
+                                <option value="1">1 Day before</option>
+                                <option value="2">2 Days before</option>
+                                <option value="3">3 Days before</option>
+                                <option value="5">5 Days before</option>
+                                <option value="10">10 Days before</option>
+                                <option value="20">20 Days before</option>
+                                <option value="30">30 Days before</option>
+                                <option value="60">60 Days before</option>
+                                <option value="999">All</option>
+                            </select>
+                            <button class="btn btn-primary" ng-click="getMeanRequests()">Go</button>
+                        </div>
+                        <table id="mean-table" class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Username</th>
+                                    <th>Time</th>
+                                    <th>Total Message</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+<script src="./main.js"></script>
+
+</html>
