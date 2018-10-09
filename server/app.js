@@ -12,13 +12,11 @@ let responseTimeRouter = require('./api/response_times');
 
 app.use('/', express.static(path.join(__dirname, '../client')));
 app.use((req, res, next) => {
-    // console.log(req.path);
     next();
 });
 app.use('/', responseTimeRouter);
 app.use('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
-   // res.send("I2g's Monitoring Service");
 });
 
 http.createServer(app).listen(config.app.port, () => {
