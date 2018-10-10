@@ -18,6 +18,7 @@ app.controller('appController', async function ($scope, $http) {
             { data: 'index' },
             { data: 'socketId' },
             { data: 'num' },
+            { data: 'status' },
             { data: 'time' }
         ],
     });

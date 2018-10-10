@@ -10,6 +10,6 @@
     "database": "wi-monitor"
   },
   "service": {
-    "authenticate": "http://admin.dev.i2g.cloud"
+    "authenticate": "http://admin.dev.i2g.cloud" 
   }  
 }
